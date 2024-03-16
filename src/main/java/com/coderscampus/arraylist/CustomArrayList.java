@@ -1,5 +1,7 @@
 package com.coderscampus.arraylist;
 
+import java.util.Arrays;
+
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10]; // backing Object array, which refers to an array of size 10 initially;
 	private int size;
@@ -7,7 +9,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public boolean add(T item) { // append item at the next available spot
-		
+		 
 		int currentLength = items.length;
 		if (size < currentLength) {
 			items[size] = item;
@@ -26,6 +28,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		int newSize = items.length * 2;
 		Object[] newArray = new Object[newSize];
 		System.arraycopy(items, 0, newArray, 0, size);
+		//items = Arrays.copyOf(items, newSize);
 		items = newArray;
 		items[size] = item;
 		size++;
@@ -34,8 +37,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
+//		// TODO Auto-generated method stub
 		return size;
+		//return this.items.length;
 	}
 
 	@Override
